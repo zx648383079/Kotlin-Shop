@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.dream.shop.ApiEndpoint"
-            android:value="http://zodream.localhost/open/" />
+            android:value="https://zodream.cn/open/" />
         <meta-data
             android:name="com.dream.shop.AppId"
             android:value="11543906547" />

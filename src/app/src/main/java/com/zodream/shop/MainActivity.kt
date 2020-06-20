@@ -7,6 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.zodream.shop.bootstrap.DreamApp
+import com.zodream.shop.models.Site
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,5 +27,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        var data: Site? = DreamApp.rest.site.getSite(null) ?: return
     }
 }

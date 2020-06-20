@@ -5,16 +5,15 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.zodream.shop.repositories.RestRepository
 import android.content.pm.PackageManager
-import android.os.Bundle
 
 class DreamApp : Application() {
 
     companion object {
-        val USER_DATA_KEY = "user_data"
-        val API_ENDPOINT_KEY = "com.dream.shop.ApiEndpoint"
-        val APP_ID_KEY = "com.dream.shop.AppId"
-        val SECRET_KEY = "com.dream.shop.Secret"
-        val TOKEN_KEY = "token"
+        const val USER_DATA_KEY = "user_data"
+        const val API_ENDPOINT_KEY = "com.dream.shop.ApiEndpoint"
+        const val APP_ID_KEY = "com.dream.shop.AppId"
+        const val SECRET_KEY = "com.dream.shop.Secret"
+        const val TOKEN_KEY = "token"
         lateinit var instance: DreamApp
             private set
         lateinit var rest: RestRepository
@@ -42,11 +41,11 @@ class DreamApp : Application() {
         createRest()
     }
 
-    fun createRest() {
+    private fun createRest() {
         val host = getMetaData<String>(API_ENDPOINT_KEY) as String
-        val appid = getMetaData<String>(APP_ID_KEY) as String
+        val appId = getMetaData<String>(APP_ID_KEY) as String
         val secret = getMetaData<String>(SECRET_KEY) as String
-        rest = RestRepository(host, appid, secret, token)
+        rest = RestRepository(host, appId, secret, token)
     }
 
     fun getSharedPreferences(): SharedPreferences {

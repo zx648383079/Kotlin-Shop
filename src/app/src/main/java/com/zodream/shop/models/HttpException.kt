@@ -11,7 +11,6 @@ data class HttpException(var code: Int = 404, var message: String = "not found",
         code = data.getInt("code")
         message = data.getString("message")
         description = data.getString("description")
-
     }
 
 }
