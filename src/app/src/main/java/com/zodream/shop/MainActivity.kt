@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        var data: Site? = DreamApp.rest.site.getSite(null) ?: return
+        DreamApp.rest.site.getSite(fun (res: Site) {
+            val logo = res.logo
+        })
     }
 }

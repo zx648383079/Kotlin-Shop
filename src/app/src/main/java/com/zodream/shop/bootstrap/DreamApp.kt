@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.zodream.shop.repositories.RestRepository
 import android.content.pm.PackageManager
+import android.os.Bundle
 
 class DreamApp : Application() {
 
@@ -42,21 +43,25 @@ class DreamApp : Application() {
     }
 
     private fun createRest() {
-        val host = getMetaData<String>(API_ENDPOINT_KEY) as String
-        val appId = getMetaData<String>(APP_ID_KEY) as String
-        val secret = getMetaData<String>(SECRET_KEY) as String
-        rest = RestRepository(host, appId, secret, token)
+        val host = getMetaData(API_ENDPOINT_KEY) as String
+        val appId = getMetaData(APP_ID_KEY) as String
+        val secret = getMetaData(SECRET_KEY) as String
+        rest = RestRepository(host, appId.trim(), secret, token)
     }
 
     fun getSharedPreferences(): SharedPreferences {
         return getSharedPreferences(USER_DATA_KEY, Context.MODE_PRIVATE)
     }
 
-    fun <T> getMetaData(name: String): T? {
+    fun getMetaData(): Bundle? {
         return packageManager.getApplicationInfo(
             packageName,
             PackageManager.GET_META_DATA
-        ).metaData?.get(name) as T
+        ).metaData;
+    }
+
+    fun getMetaData(name: String): String? {
+        return getMetaData()?.getString(name);
     }
 
 }
