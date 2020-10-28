@@ -1,4 +1,4 @@
-package com.zodream.shop.ui.home
+package com.zodream.shop.ui.category
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zodream.shop.R
 
-class HomeFragment : Fragment() {
+class CategoryFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var categoryViewModel: CategoryViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        categoryViewModel =
+            ViewModelProvider(this).get(CategoryViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_category, container, false)
+        val textView: TextView = root.findViewById(R.id.text_category)
+        categoryViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
